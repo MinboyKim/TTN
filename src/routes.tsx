@@ -4,6 +4,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import SendLetters from "./pages/SendLetters";
+import Letters from "./pages/Letters";
+import LetterDetail from "./pages/LetterDetail";
 
 export const router = createBrowserRouter([
   {
@@ -39,15 +43,25 @@ export const router = createBrowserRouter([
           },
           {
             path: "dashboard",
-            element: <div>Dashboard</div>,
+            element: <Dashboard />,
           },
           {
             path: "send-letter",
-            element: <div>Send Letter</div>,
+            element: <SendLetters />,
           },
           {
             path: "letters",
-            element: <div>Letters</div>,
+            element: <Outlet />,
+            children: [
+              {
+                index: true,
+                element: <Letters />,
+              },
+              {
+                path: ":id",
+                element: <LetterDetail />,
+              },
+            ],
           },
         ],
       },

@@ -1,5 +1,6 @@
 import { useSession } from "@/hooks/use-session";
 import { Navigate, Outlet } from "react-router-dom";
+import NavBar from "./NavBar";
 
 const ProtectedRoute = () => {
   const { isLoggedIn } = useSession();
@@ -10,6 +11,7 @@ const ProtectedRoute = () => {
 
   return (
     <div className="w-full h-full flex">
+      <NavBar />
       <Outlet />
     </div>
   );
