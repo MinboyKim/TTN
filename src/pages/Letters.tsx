@@ -1,29 +1,32 @@
-import LetterListItem from "@/components/LetterListItem";
-
-const data = [
-  {
-    id: 1,
-    title: "Letter 1",
-    senderName: "John Doe",
-    receiverName: "Jane Doe",
-    sendedAt: "2024-11-11T23:28:16.043235",
-  },
-  {
-    id: 2,
-    title: "Letter 2",
-    senderName: "John Doe",
-    receiverName: "Jane Doe",
-    sendedAt: "2024-11-11T23:28:16.043235",
-  },
-];
+import ReceivedList from "@/components/ReceivedList";
+import SentList from "@/components/SentList";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Letters = () => {
+  const [section, setSection] = useState("received");
+
   return (
     <div className="p-4 flex flex-col gap-4 w-full">
-      <h1 className="text-3xl font-bold">Letters</h1>
-      {data.map((letter) => (
-        <LetterListItem key={letter.id} letter={letter} />
-      ))}
+      <div className="flex w-full items-center justify-between">
+        <h1 className="text-3xl font-bold">Letters</h1>
+        <div className="flex gap-4">
+          <Button
+            onClick={() => setSection("received")}
+            variant={section === "received" ? "default" : "secondary"}
+          >
+            Received
+          </Button>
+          <Button
+            onClick={() => setSection("sent")}
+            variant={section === "sent" ? "default" : "secondary"}
+          >
+            Sent
+          </Button>
+        </div>
+      </div>
+
+      {section === "received" ? <ReceivedList /> : <SentList />}
     </div>
   );
 };

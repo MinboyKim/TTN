@@ -21,6 +21,12 @@ const Login = () => {
     const nickname = formData.get("nickname") as string;
     const password = formData.get("password") as string;
 
+    if (!nickname || !nickname.trim() || !password || !password.trim()) {
+      setError("Please fill all the fields");
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await instance.post("/users/login", {
         nickname,

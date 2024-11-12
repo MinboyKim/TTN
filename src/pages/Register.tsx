@@ -27,6 +27,18 @@ const Register = () => {
     const password = formData.get("password") as string;
     const language = formData.get("language") as string;
 
+    if (
+      !nickname ||
+      !nickname.trim() ||
+      !password ||
+      !password.trim() ||
+      !language
+    ) {
+      setError("Please fill all the fields");
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await instance.post("/users/join", {
         nickname,
