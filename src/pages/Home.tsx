@@ -1,10 +1,16 @@
 import { Heart, MailCheck, UsersRound } from "lucide-react";
 import HeroImage from "/hero.png";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="w-full h-full flex items-center justify-center flex-col gap-20">
+    <div className="w-full h-full flex items-center justify-center flex-col gap-20 bg-white dark:bg-black">
       <img src={HeroImage} alt="hero" className="h-[300px]" />
+
+      <Link to="/app">
+        <Button size="lg">Get Started</Button>
+      </Link>
 
       <div className="flex w-full flex-col items-center justify-center gap-8 md:flex-row">
         <div className="flex min-h-[200px] w-full max-w-[442px] flex-col gap-4 rounded-lg border p-6 transition-all duration-200 ease-in-out hover:scale-110">

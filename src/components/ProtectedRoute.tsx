@@ -1,15 +1,18 @@
+import { useSession } from "@/hooks/use-session";
 import { Navigate, Outlet } from "react-router-dom";
 
-interface ProtectedRouteProps {
-  isLoggedIn: boolean;
-}
+const ProtectedRoute = () => {
+  const { isLoggedIn } = useSession();
 
-const ProtectedRoute = ({ isLoggedIn }: ProtectedRouteProps) => {
   if (!isLoggedIn) {
     return <Navigate to="/" replace={true} />;
   }
 
-  return <Outlet />;
+  return (
+    <div className="w-full h-full flex">
+      <Outlet />
+    </div>
+  );
 };
 
 export default ProtectedRoute;

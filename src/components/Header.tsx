@@ -2,8 +2,16 @@ import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./ui/mode-toggle";
 import { Mail } from "lucide-react";
+import { useSession } from "@/hooks/use-session";
 
 const Header = () => {
+  const { isLoggedIn, setIsLoggedIn } = useSession();
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    setIsLoggedIn(false);
+  };
+
   return (
     <header className="p-6 flex items-center justify-between">
       <Link to="/" className="flex items-center gap-4">
@@ -12,9 +20,13 @@ const Header = () => {
       </Link>
       <div className="flex items-center gap-4">
         <ModeToggle />
-        <Link to="/login">
-          <Button>Login</Button>
-        </Link>
+        {isLoggedIn ? (
+          <Button onClick={handleLogout}>Logout</Button>
+        ) : (
+          <Link to="/login">
+            <Button>Login</Button>
+          </Link>
+        )}
       </div>
     </header>
   );
