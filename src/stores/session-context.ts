@@ -4,5 +4,6 @@ const token = localStorage.getItem("accessToken");
 
 export const SessionContext = createContext({
   isLoggedIn: token ? true : false,
-  setIsLoggedIn: (value: boolean) => {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setIsLoggedIn: (_: boolean) => {},
 });
