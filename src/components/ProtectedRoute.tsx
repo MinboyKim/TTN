@@ -6,7 +6,7 @@ const ProtectedRoute = () => {
   const { isLoggedIn } = useSession();
 
   if (!isLoggedIn) {
-    return <Navigate to="/" replace={true} />;
+    return <Navigate to="/login" replace={true} />;
   }
 
   return (

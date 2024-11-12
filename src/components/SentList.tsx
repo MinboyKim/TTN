@@ -9,12 +9,18 @@ const SentList = () => {
     error,
   } = useFetch<LetterListItemType[]>("/letters/sent");
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p className="text-red-500">{error}</p>;
+  if (loading || error || sentList?.length === 0) {
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : sentList?.length === 0 ? (
+          <p className="text-2xl font-bold">No letters received</p>
+        ) : null}
+      </div>
+    );
   }
 
   return (

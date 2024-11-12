@@ -3,7 +3,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSession } from "@/hooks/use-session";
 import { instance } from "@/lib/instance";
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -36,10 +35,8 @@ const Login = () => {
       localStorage.setItem("accessToken", response.data.response.accessToken);
       setIsLoggedIn(true);
       navigate("/");
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        setError(error.response?.data.message);
-      }
+    } catch {
+      setError("An error occurred. Please try again.");
       setLoading(false);
     }
   };
@@ -74,7 +71,7 @@ const Login = () => {
               Register
             </Button>
           </Link>
-          {error && <p className="text-red-500">{error}</p>}
+          {error && <p className="text-red-500 w-full text-center">{error}</p>}
         </div>
       </form>
     </div>

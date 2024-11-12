@@ -6,12 +6,16 @@ const LetterDetail = () => {
   const { id } = useParams<{ id: string }>();
   const { data: letter, loading, error } = useFetch<Letter>(`/letters/${id}`);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p className="text-red-500">{error}</p>;
+  if (loading || error) {
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : null}
+      </div>
+    );
   }
 
   return (

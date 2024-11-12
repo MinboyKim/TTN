@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/select";
 import { instance } from "@/lib/instance";
 import { useState } from "react";
-import axios from "axios";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -48,10 +47,8 @@ const Register = () => {
       setLoading(false);
       localStorage.setItem("accessToken", response.data.response.accessToken);
       navigate("/");
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        setError(error.response?.data.message);
-      }
+    } catch {
+      setError("An error occurred. Please try again.");
       setLoading(false);
     }
   };
@@ -97,7 +94,7 @@ const Register = () => {
               Back
             </Button>
           </Link>
-          {error && <p className="text-red-500">{error}</p>}
+          {error && <p className="text-red-500 w-full text-center">{error}</p>}
         </div>
       </form>
     </div>
