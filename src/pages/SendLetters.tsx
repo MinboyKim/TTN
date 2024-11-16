@@ -18,8 +18,8 @@ const SendLetters = () => {
 
     const formData = new FormData(e.currentTarget);
     const title = formData.get("title") as string;
-    const message = formData.get("message") as string;
-    if (!message || !message.trim() || !title || !title.trim()) {
+    const contents = formData.get("contents") as string;
+    if (!contents || !contents.trim() || !title || !title.trim()) {
       setError("Please fill all the fields");
       return;
     }
@@ -27,7 +27,7 @@ const SendLetters = () => {
     try {
       await instance.post("/letters", {
         title,
-        message,
+        contents,
       });
       setLoading(false);
       navigate("/app/letters");
@@ -52,11 +52,11 @@ const SendLetters = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <Label htmlFor="message">Message</Label>
+        <Label htmlFor="contents">Contents</Label>
         <Textarea
-          id="message"
-          name="message"
-          placeholder="Enter your message"
+          id="contents"
+          name="contents"
+          placeholder="Enter your contents"
           className="p-2 border rounded-lg h-[250px]"
         />
       </div>
