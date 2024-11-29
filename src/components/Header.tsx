@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header className="p-6 flex items-center justify-between">
+    <header className="p-6 flex items-center justify-between dark:bg-[url('/bg.jpg')]">
       <Link to="/" className="flex items-center gap-4">
         <Mail className="h-8 w-8" />
         <h1 className="text-2xl font-bold">Through the Night</h1>

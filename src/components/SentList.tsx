@@ -26,7 +26,7 @@ const SentList = () => {
   return (
     <div className="p-4 flex flex-col gap-4 w-full">
       {sentList?.map((letter) => (
-        <LetterListItem key={letter.id} letter={letter} />
+        <LetterListItem key={letter.id} letter={letter} isSent={true} />
       ))}
     </div>
   );

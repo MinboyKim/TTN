@@ -26,7 +26,7 @@ const ReceivedList = () => {
   return (
     <div className="p-4 flex flex-col gap-4 w-full">
       {receivedList?.map((letter) => (
-        <LetterListItem key={letter.id} letter={letter} />
+        <LetterListItem key={letter.id} letter={letter} isSent={false} />
       ))}
     </div>
   );

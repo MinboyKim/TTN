@@ -7,10 +7,8 @@ import { Toaster } from "./components/ui/toaster.tsx";
 import { SessionProvider } from "./stores/session-provider";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <SessionProvider>
-      <RouterProvider router={router} />
-      <Toaster />
-    </SessionProvider>
-  </StrictMode>
+  <SessionProvider>
+    <RouterProvider router={router} />
+    <Toaster />
+  </SessionProvider>
 );

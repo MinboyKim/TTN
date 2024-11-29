@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import SendLetters from "./pages/SendLetters";
 import Letters from "./pages/Letters";
 import LetterDetail from "./pages/LetterDetail";
+import SendLettersBuddy from "./pages/SendLettersBuddy";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +39,6 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            path: "/app",
             element: <Navigate to="/app/dashboard" />,
           },
           {
@@ -47,7 +47,17 @@ export const router = createBrowserRouter([
           },
           {
             path: "send-letter",
-            element: <SendLetters />,
+            element: <Outlet />,
+            children: [
+              {
+                index: true,
+                element: <SendLetters />,
+              },
+              {
+                path: ":buddyName",
+                element: <SendLettersBuddy />,
+              },
+            ],
           },
           {
             path: "letters",

@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className="p-6 w-full h-full flex items-center justify-center">
+    <div className="p-6 w-full h-full flex items-center justify-center dark:bg-[url('/bg.jpg')] dark:bg-cover bg-background">
       <form
         className="flex items-center justify-center p-6 rounded-xl border flex-col gap-6"
         onSubmit={onSubmit}

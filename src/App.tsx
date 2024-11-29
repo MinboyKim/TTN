@@ -7,7 +7,7 @@ import { ThemeProvider } from "./stores/theme-provider";
 function App() {
   return (
     <ThemeProvider>
-      <div className="flex flex-col w-full h-full">
+      <div className="flex flex-col w-full h-full font-pacifico">
         <Header />
         <Outlet />
         <Footer />

@@ -5,9 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { instance } from "@/lib/instance";
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const SendLetters = () => {
+const SendLettersBuddy = () => {
+  const { buddyName } = useParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -24,8 +25,13 @@ const SendLetters = () => {
       return;
     }
 
+    if (!buddyName) {
+      navigate("/app/dashboard");
+    }
+
     try {
-      await instance.post("/letters", {
+      await instance.post("/buddy/letter", {
+        buddyName,
         title,
         contents,
       });
@@ -41,15 +47,17 @@ const SendLetters = () => {
 
   return (
     <form
-      className="p-4 flex flex-col gap-10 w-full dark:bg-[url('/bg.jpg')] dark:bg-cover bg-white"
+      className="p-4 flex flex-col gap-8 w-full dark:bg-[url('/bg.jpg')] dark:bg-cover bg-white"
       onSubmit={onSubmit}
     >
       <div className="flex flex-col gap-4">
         <h1 className="text-5xl font-bold text-primary">Send Letters</h1>
-        <p className="text-3xl">
+        <p className="text-2xl">
           Write a letter to someone who will listen to your story.
         </p>
       </div>
+
+      <h1 className="text-3xl font-bold">To: {buddyName}</h1>
 
       <div className="flex flex-col gap-4">
         <Label htmlFor="title" className="text-3xl">
@@ -78,4 +86,4 @@ const SendLetters = () => {
   );
 };
 
-export default SendLetters;
+export default SendLettersBuddy;

@@ -3,6 +3,9 @@ export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      pacifico: ["Pacifico"],
+    },
     extend: {
       borderRadius: {
         lg: "var(--radius)",
@@ -53,5 +56,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
+  plugins: [import("tailwindcss-animate"), import("tailwind-scrollbar-hide")],
 };
